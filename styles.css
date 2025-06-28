@@ -1,0 +1,150 @@
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background: #f9fafe;
+  margin: 0;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  max-width: 600px;
+  width: 100%;
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header h1 span.notifications-counter {
+  background: #0a327b;
+  color: white;
+  padding: 3px 10px;
+  border-radius: 8px;
+  font-size: 0.8em;
+  margin-left: 5px;
+}
+
+.mark-all-button {
+  border: none;
+  background: none;
+  color: #5e6778;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.notifications {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.notification {
+  display: flex;
+  gap: 15px;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  background-color: #f0f4fa;
+  transition: background 0.3s;
+}
+
+.notification.read {
+  background-color: white;
+}
+
+.notification img.avatar {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+}
+
+.notification-content {
+  flex: 1;
+}
+
+.notification-content .info {
+  font-size: 0.95rem;
+  color: #5e6778;
+}
+
+.notification-content .info strong.profile-link {
+  color: #1d2025;
+  cursor: pointer;
+}
+
+.notification-content .info a.notification-link-post {
+  color: #0a327b;
+  font-weight: bold;
+  text-decoration: none;
+  margin-left: 5px;
+}
+
+.notification-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background: red;
+  border-radius: 50%;
+  margin-left: 6px;
+}
+
+.notification-time {
+  font-size: 0.75rem;
+  color: #939cad;
+  margin-top: 5px;
+}
+
+.private-message {
+  margin-top: 10px;
+  background: #f1f1f1;
+  padding: 10px;
+  border-radius: 6px;
+  color: #555;
+  font-size: 0.9rem;
+  display: none;
+}
+
+.show-message .private-message {
+  display: block;
+}
+
+.thumb {
+  width: 40px;
+  height: 40px;
+  border-radius: 5px;
+  margin-left: 10px;
+}
+
+.footer {
+  text-align: center;
+  font-size: 0.8rem;
+  color: #999;
+  margin-top: 20px;
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 15px;
+  }
+
+  .notification {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .notification img.avatar {
+    margin-bottom: 10px;
+  }
+
+  .thumb {
+    margin-top: 10px;
+    margin-left: 0;
+  }
+}
