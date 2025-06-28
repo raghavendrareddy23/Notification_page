@@ -141,7 +141,7 @@ function markAllAsRead() {
     item.classList.remove("new-notification");
     item.classList.add("read");
     const dot = item.querySelector(".notification-dot");
-    if (dot) dot.remove();
+    if (dot) dot.style.display = "none"; 
   });
 
   counter.textContent = "0";
