@@ -67,6 +67,7 @@ body {
 
 .notification-content {
   flex: 1;
+  cursor: pointer;
 }
 
 .notification-content .info {
