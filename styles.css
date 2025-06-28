@@ -22,7 +22,7 @@ body {
   align-items: center;
 }
 
-.header h1 span.notifications-counter {
+.notifications-counter {
   background: #0a327b;
   color: white;
   padding: 3px 10px;
@@ -39,13 +39,13 @@ body {
   font-weight: 600;
 }
 
-.notifications {
+.notifications-list {
   list-style: none;
   padding: 0;
   margin-top: 20px;
 }
 
-.notification {
+.notifications-list li {
   display: flex;
   gap: 15px;
   padding: 15px;
@@ -55,32 +55,32 @@ body {
   transition: background 0.3s;
 }
 
-.notification.read {
+.notifications-list li.read {
   background-color: white;
 }
 
-.notification img.avatar {
+.notifications-list li img.avatar {
   width: 45px;
   height: 45px;
   border-radius: 50%;
 }
 
-.notification-content {
+.notification-infos {
   flex: 1;
   cursor: pointer;
 }
 
-.notification-content .info {
+.notification-text {
   font-size: 0.95rem;
   color: #5e6778;
 }
 
-.notification-content .info strong.profile-link {
+.notification-text strong.profile-link a {
   color: #1d2025;
-  cursor: pointer;
+  text-decoration: none;
 }
 
-.notification-content .info a.notification-link-post {
+.notification-link-post {
   color: #0a327b;
   font-weight: bold;
   text-decoration: none;
@@ -102,25 +102,18 @@ body {
   margin-top: 5px;
 }
 
-.private-message {
-  margin-top: 10px;
+.notification-text-private-message {
+  display: none;
   background: #f1f1f1;
   padding: 10px;
+  margin-top: 10px;
   border-radius: 6px;
-  color: #555;
   font-size: 0.9rem;
-  display: none;
+  color: #555;
 }
 
-.show-message .private-message {
+li.show-message .notification-text-private-message {
   display: block;
-}
-
-.thumb {
-  width: 40px;
-  height: 40px;
-  border-radius: 5px;
-  margin-left: 10px;
 }
 
 .footer {
@@ -128,24 +121,4 @@ body {
   font-size: 0.8rem;
   color: #999;
   margin-top: 20px;
-}
-
-@media (max-width: 600px) {
-  .container {
-    padding: 15px;
-  }
-
-  .notification {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .notification img.avatar {
-    margin-bottom: 10px;
-  }
-
-  .thumb {
-    margin-top: 10px;
-    margin-left: 0;
-  }
 }

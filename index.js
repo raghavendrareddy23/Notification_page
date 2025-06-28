@@ -79,35 +79,50 @@ const data = [
   },
 ];
 
-const list = document.getElementById("notificationList");
+const list = document.getElementById("list");
 const counter = document.querySelector(".notifications-counter");
-const markAllReadBtn = document.querySelector(".mark-all-button");
+const markAllBtn = document.querySelector(".mark-all-button");
 
-let unreadCount = data.length;
+let unread = data.length;
+counter.textContent = unread;
 
 function renderNotification(notificationData) {
   const li = document.createElement("li");
-  li.className = "notification new-notification";
+  li.className = "new-notification";
 
   const { img, info } = notificationData;
-  const hasMessage = !!info.privateMessage;
-  const hasPicture = !!info.picture;
 
   li.innerHTML = `
     <img class="avatar" src="${img}" alt="${info.name}">
-    <div class="notification-content">
-      <div class="info">
-        <strong class="profile-link"><a href="#">${info.name}</a></strong> ${info.action}
-        ${info.postName ? `<a href="#" class="notification-link-post">${info.postName}</a>` : ""}
+    <div class="notification-infos">
+      <div class="notification-text">
+        <strong class="profile-link"><a href="#">${info.name}</a></strong> ${
+    info.action
+  }
+        ${
+          info.postName
+            ? `<a href="#" class="notification-link-post">${info.postName}</a>`
+            : ""
+        }
         <span class="notification-dot"></span>
       </div>
       <div class="notification-time">${info.time}</div>
-      ${hasMessage ? `<div class="private-message">${info.privateMessage}</div>` : ""}
+      ${
+        info.privateMessage
+          ? `<div class="notification-text-private-message">${info.privateMessage}</div>`
+          : ""
+      }
     </div>
-    ${hasPicture ? `<img class="thumb" src="${info.picture}" alt="thumbnail">` : ""}
+    ${
+      info.picture
+        ? `<img src="${info.picture}" class="thumb" alt="thumbnail">`
+        : ""
+    }
   `;
 
-  if (hasMessage) {
+  li.classList.add("notification");
+
+  if (info.privateMessage) {
     li.addEventListener("click", () => {
       li.classList.toggle("show-message");
     });
@@ -121,17 +136,16 @@ function renderAll() {
 }
 
 function markAllAsRead() {
-  const notifications = document.querySelectorAll(".notification");
-  notifications.forEach(notification => {
-    notification.classList.add("read");
-    notification.classList.remove("new-notification");
-    const dot = notification.querySelector(".notification-dot");
+  const items = document.querySelectorAll("li.notification");
+  items.forEach((item) => {
+    item.classList.remove("new-notification");
+    item.classList.add("read");
+    const dot = item.querySelector(".notification-dot");
     if (dot) dot.remove();
   });
 
-  unreadCount = 0;
-  counter.textContent = unreadCount;
+  counter.textContent = "0";
 }
 
-markAllReadBtn.addEventListener("click", markAllAsRead);
+markAllBtn.addEventListener("click", markAllAsRead);
 renderAll();
